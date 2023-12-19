@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Points Web</title>
+
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+
+    <div class="">
+      <p>Viết chương trình nhập điểm chuẩn, điểm 3 môn thi, khu vực và đối tượng dự thi. Cho biết thí sinh đó đậu hay rớt và tổng điểm đạt được.</p>
+      <input id="diemChuan" type="number" placeholder="Nhập điểm chuẩn" />
+      <select id="khuVuc">
+        <option value="0">Chọn khu vực</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
+
+      <select id="doiTuong">
+        <option value="0">Chọn đối tượng</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+      <input
+        id="mon1"
+        type="number"
+        placeholder="Điểm môn thứ 1"
+      />
+      <input
+        id="mon2"
+        type="number"
+        placeholder="Điểm môn thứ 2"
+      />
+      <input
+        id="mon3"
+        type="number"
+        placeholder="Điểm môn thứ 3"
+      />
+
+      <div class="btn">
+        <button type="button" onclick="getResult()">Kết Quả</button>
+        <button type="button" onclick="location. reload()">Reset</button>
+      </div>
+
+      <div class="result">
+        <i class="fa fa-hand-point-right"></i>
+        <span id="result"></span>
+      </div>
+      
+    </div>
+
+    <script src="./js/main.js"></script>
+    
+</body>
+</html>
