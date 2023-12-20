@@ -14,23 +14,25 @@
     />
 
     <link rel="stylesheet" href="./css/style.css" />
-
   </head>
   <body>
     <div class="">
       <h3>Viết chương trình tính hoá đơn khách hàng cho 1 công ty cáp.</h3>
-      <select id="cusType" onchange="toggleConnect() required">
-        <option value="0">Chọn loại khách hàng</option>
-        <option value="nhaDan">Nhà dân </option>
+      <select id="cusType" onchange="toggleConnect()">
+        <option value="">Chọn loại khách hàng</option>
+        <option value="nhaDan">Nhà dân</option>
         <option value="doanhNghiep">Doanh nghiệp</option>
       </select>
       <input id="cusNum" type="text" placeholder="Nhập mã khách hàng" />
+      <input id="number" type="number" placeholder="Số kênh cao cấp" />
       <input
-        id="number"
         type="number"
-        placeholder="Số kênh cao cấp"
+        id="connectNumber"
+        min="1"
+        required
+        placeholder="Số kết nối"
+        style="display: none"
       />
-      <input type="number" id="connect" min="1" required placeholder="Số kết nối">
       <div class="btn">
         <button type="button" onclick="getBill()">Tính tiền cáp</button>
         <button type="button" onclick="location. reload()">Reset</button>
@@ -40,7 +42,6 @@
         <i class="fa fa-hand-point-right"></i>
         <span id="result"></span>
       </div>
-      
     </div>
 
     <script src="./js/main.js"></script>

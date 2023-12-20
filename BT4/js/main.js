@@ -1,12 +1,13 @@
 function toggleConnect() {
   let cusType = document.getElementById("cusType").value;
-  let connect = +document.getElementById("connect").value;
+  let connectNumber = document.getElementById("connectNumber");
 
-  if (cusType === "nhaDan") {
-    connect.disabled = true;
-    connect.value = " "; // Reset giá trị nếu bị disabled
+  if (cusType === "doanhNghiep") {
+    connectNumber.style.display = "block";
+    connectNumber.removeAttribute("disabled");
   } else {
-    connect.disabled = false;
+    connectNumber.style.display = "none";
+    connectNumber.setAttribute("disabled", "disabled");
   }
 }
 
@@ -16,7 +17,7 @@ function getBill() {
   let cusType = document.getElementById("cusType").value;
   let cusNum = document.getElementById("cusNum").value;
   let number = +document.getElementById("number").value;
-  let connect = +document.getElementById("connect").value; 
+  let connectNumber = +document.getElementById("connectNumber").value;
 
   let processingFee, basicServiceFee, premiumChannelFee, totalBill;
 
@@ -24,19 +25,25 @@ function getBill() {
     processingFee = 4.5;
     basicServiceFee = 20.5;
     premiumChannelFee = 7.5 * number;
-  } else {
+  } else if (cusType === "doanhNghiep") {
     processingFee = 15;
-    basicServiceFee = 75 + (connect > 10 ? (connect - 10) * 5 : 0);
+    basicServiceFee = 75 + (connectNumber > 10 ? (connectNumber - 10) * 5 : 0);
     premiumChannelFee = 50 * number;
+  } else {
+    document.getElementById("result").innerHTML =
+      "Vui lòng chọn loại Khách hàng";
   }
 
   totalBill = processingFee + basicServiceFee + premiumChannelFee;
+  // totalBill=totalBill.toLocaleString("en-US");
 
   // Hiển thị kết quả
   let result = (document.getElementById("result").innerHTML = `
             <p>Phí xử lý hóa đơn: $${processingFee.toFixed(2)}</p>
             <p>Phí dịch vụ cơ bản: $${basicServiceFee.toFixed(2)}</p>
-            <p>Thuê kênh cao cấp: $${(premiumChannelFee.toFixed(2))}</p>
-            <h3>Mã khách hàng: ${cusNum}; Tổng hóa đơn: $${totalBill.toFixed(2)}</h3>
+            <p>Thuê kênh cao cấp: $${premiumChannelFee.toFixed(2)}</p>
+            <h3>Mã khách hàng: ${cusNum}; Tổng hóa đơn: $${totalBill.toFixed(
+    2
+  )}</h3>
         `);
 }
